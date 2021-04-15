@@ -1,5 +1,6 @@
 const express = require('express')
 require('./configs/env')
+require('./database')
 const publis = require('./routers/publications.router')
 const user = require('./routers/user.router')
 
