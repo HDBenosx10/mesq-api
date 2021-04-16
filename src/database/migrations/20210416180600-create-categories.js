@@ -2,31 +2,17 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('publications', {
+    await queryInterface.createTable('categories', {
         id: {
             type:Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,
         },
-        user_id: {
-            type:Sequelize.INTEGER,
-            allowNull: false,
-            references: { model: 'users', key: 'id' },
-            onUpdate: 'CASCADE',
-            onDelete: 'CASCADE',
-        },
-        title: {
+        name: {
             type:Sequelize.STRING,
             allowNull: false,
-        },
-        content: {
-            type:Sequelize.STRING,
-            allowNull: false,
-        },
-        description: {
-            type:Sequelize.STRING,
-            allowNull: false,
+            unique: true,
         },
         created_at: {
             type:Sequelize.DATE,
@@ -41,7 +27,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('publications');
+    await queryInterface.dropTable('categories');
 
   }
 };
