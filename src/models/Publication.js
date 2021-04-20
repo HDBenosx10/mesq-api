@@ -1,15 +1,13 @@
 const { Model, DataTypes, QueryTypes } = require('sequelize')
 
 class Publication extends Model {
-    sequelize
     static init(sequelize) {
-        this.sequelize = sequelize
         super.init({
             title: DataTypes.STRING,
             description: DataTypes.STRING,
             content: DataTypes.STRING,
         }, {
-            sequelize: this.sequelize
+            sequelize
         })
     }
 
