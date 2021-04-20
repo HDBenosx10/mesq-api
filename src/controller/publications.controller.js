@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const Publication = require('../models/Publication')
 const Category = require('../models/Category')
+const { Op } = require('sequelize')
 
 exports.index = async (req, res) =>{
     const { user_id } = req.params
@@ -61,11 +62,26 @@ exports.show = (req, res) =>{
     })
 }
 
-exports.search = (req, res) =>{
-    res.status(200).json({
-        status: "Running",
-        router: "publis",
-        route: "show",
-        msg: `${req.query.q}`
+exports.search = async (req, res) =>{
+    let {q:query} = req.query
+    if(!query) query = ''
+    const publication = await Publication.findAll({
+        where: {
+            [Op.or]:[
+                {
+                    title: {
+                        [Op.like]: `%${query}%`
+                    }
+                },
+
+                {
+                    description: {
+                        [Op.like]: `%${query}%`
+                    }
+                }
+            ]
+        }
+
     })
+    res.status(200).json(publication)
 }
