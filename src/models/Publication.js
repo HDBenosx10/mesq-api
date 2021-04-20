@@ -9,7 +9,7 @@ class Publication extends Model {
             description: DataTypes.STRING,
             content: DataTypes.STRING,
         }, {
-            sequelize
+            sequelize: this.sequelize
         })
     }
 

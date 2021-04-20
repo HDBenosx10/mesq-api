@@ -70,11 +70,8 @@ exports.user = async (req, res) =>{
 }
 
 exports.store = async (req, res) =>{
-    const { user_id } = req.params
     const { title, description, categories, content } = req.body
-
-    const user = User.findByPk(user_id)
-
+    const user = await User.findByPk(req.user_id)
     if(!user) {
         return res.status(400).json({ error: 'User not found' })
     }
@@ -83,7 +80,7 @@ exports.store = async (req, res) =>{
         title,
         description,
         content,
-        user_id
+        user_id : user.id
     })
 
     for (let category of categories) {
@@ -93,8 +90,6 @@ exports.store = async (req, res) =>{
 
     return res.status(200).json(publication)
 }
-
-
 
 exports.delete = async (req, res) => {
     const { publication_id } = req.params
