@@ -2,10 +2,14 @@ const { Router } = require('express')
 const publications = require('../controller/publications.controller')
 const router = new Router()
 
-// router.get('/',publications.index)
-router.get('/show/:category',publications.show)
-router.get('/search/',publications.search)
+//===============/ROTAS PUBLICAS/=====================//
+router.get('/',publications.index) //✅
+router.get('/category/:category',publications.show) //✅
+router.get('/search',publications.search) //✅
+router.get('/user/:user_id',publications.user) //✅
+
+
 router.post('/user/:user_id/create',publications.store)
-router.get('/user/:user_id/index',publications.index)
+router.delete('/delete/:publication_id',publications.delete)
 
 module.exports = router
