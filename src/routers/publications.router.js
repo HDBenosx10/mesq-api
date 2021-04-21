@@ -9,8 +9,8 @@ router.get('/category/:category',publications.show) //✅
 router.get('/search',publications.search) //✅
 router.get('/user/:user_id',publications.user) //✅
 
-
-router.post('/create',authRequired,publications.store)
-router.delete('/delete/:publication_id',publications.delete)
+//===============/ROTAS AUTENTICADAS/=====================//
+router.post('/create',authRequired,publications.store) //✅
+router.delete('/delete/:publication_id',authRequired,publications.delete) //✅
 
 module.exports = router

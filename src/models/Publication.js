@@ -25,7 +25,7 @@ class Publication extends Model {
             ON categories.id = publis_categories.category_id
         INNER JOIN users
             ON users.id = publications.user_id
-        WHERE categories.name LIKE '%${category}%'`,{type:QueryTypes.SELECT})
+        WHERE categories.name = '${category}'`,{type:QueryTypes.SELECT})
     }
 }
 

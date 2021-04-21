@@ -94,9 +94,14 @@ exports.store = async (req, res) =>{
 exports.delete = async (req, res) => {
     const { publication_id } = req.params
 
-    const publication = await Publication.findByPk(publication_id)
+    const publication = await Publication.findOne({
+        where: {
+            id : publication_id,
+            user_id:req.user_id
+        }})
 
+    if(!publication) return res.status(400).json({ error: 'this publication does not exists' })
     await publication.destroy()
 
-    return res.status(200).json({delete: true,msg:`Publication "${publication.title}" deleted`})
+    return res.status(200).json({delete: true,msg:`Publication |${publication.title}| deleted`})
 }
