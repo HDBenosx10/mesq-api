@@ -1,7 +1,9 @@
 const express = require('express')
+const cors = require('cors')
 require('./configs/env')
-const publis = require('./routers/publications.router')
-const user = require('./routers/user.router')
+require('./database')
+const publications = require('./routers/publications.router')
+const users = require('./routers/user.router')
 
 class App {
     constructor() {
@@ -13,11 +15,12 @@ class App {
     middlewares() {
         this.app.use(express.urlencoded({ extended:true }))
         this.app.use(express.json())
+        this.app.use(cors())
     }
 
     routers() {
-        this.app.use('/publis/',publis)
-        this.app.use('/user/',user)
+        this.app.use('/publications/',publications)
+        this.app.use('/users/',users)
         this.app.get('/', (req,res)=>{
             res.json({status:'Running',msg:'Hello World'})
         })
