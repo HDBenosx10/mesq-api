@@ -17,7 +17,17 @@ After that just run following commands:
 
 At this point if you done everything correctly your server should be running on your choosen `APP_HOST:APP_PORT`.
 
-# Endpoints
+## 🚀 Techs used
+- <img src="https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/javascript/javascript_16x16.png"> Javascript
+- <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original.svg" width=16px heigth=16px> MySQL 
+- <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-plain.svg" width=16px heigth=16px> NodeJs
+- <img src="https://github.com/devicons/devicon/blob/master/icons/npm/npm-original-wordmark.svg" width=16px height=16px> Npm
+- <img src="https://github.com/devicons/devicon/blob/master/icons/sequelize/sequelize-original.svg" width=16px height=16px> Sequelize
+- 🔒 JWT
+- ☕ Coffe 
+
+
+# ![](https://cdn.discordapp.com/attachments/695442261877719050/836389514107682826/routes.png)Endpoints
 
 **Home**
 ----
