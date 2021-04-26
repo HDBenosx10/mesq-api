@@ -2,11 +2,12 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
 module.exports = async (req, res, next) => {
+    console.log(req.headers)
     const { authorization } = req.headers;
 
     if (!authorization) {
         return res.status(401).json({
-            msg: "auth required",
+            error: "auth required",
         })
     }
 
@@ -24,15 +25,16 @@ module.exports = async (req, res, next) => {
             },
         })
 
-        if (!user)return res.status(401).json({msg:'User not found'})
+        if (!user)return res.status(404).json({error:'User not found'})
 
         req.user_id = id
         req.user_email = email
+        req.user = user
         return next()
 
     } catch (e) {
         return res.status(401).json({
-            msg:'Invalid Token'
+            error:'Invalid Token'
         })
     }
 }

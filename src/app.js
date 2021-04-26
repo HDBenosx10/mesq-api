@@ -22,7 +22,7 @@ class App {
         this.app.use('/publications/',publications)
         this.app.use('/users/',users)
         this.app.get('/', (req,res)=>{
-            res.json({status:'Running',msg:'Hello World'})
+            res.json({status:'Running',time:`${Date.now()}`})
         })
         this.app.use((req,res)=>{
             res.status(404).json({status:404,msg:'Unavailable endpoint'})
